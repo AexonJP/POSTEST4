@@ -1,0 +1,153 @@
+def menu ():
+    total_uang = 0
+    daftar = ["Ayam goreng", "Ikan goreng", "Ayam bakar", "Ikan bakar", "Teh anget","Es teh"]
+    harga = ["14000", "14000", "16000", "16000", "4000", "4000"]
+    buat = []
+    harg1 = 0
+    hars =[]
+    garis = ("=======================================")
+    welcome = (f"{garis}\nMENU PENAMBAH MASA HIDUP SEMENTARA\n{garis}\n")
+    makanan = 0
+    
+
+    while (True):
+        from datetime import date
+        tanggal = date.today()
+        hari = tanggal.strftime("%A")
+        day = tanggal.strftime("%d")
+        garis = ("=======================================")
+        while (True):
+            print (("\n")*4)
+            print (f"{garis}\nSelamat datang di login awal\n{garis}")
+            nama = input ("Username : ")
+            password = input("Password : ")
+            if nama == "abdullah" and password == "210":
+                print ("\n"*100)
+                break
+            elif nama == "abdullah" and password == "094":
+                print ("\n"*100)
+                makanan =1
+                break
+            else:
+                print ("ID yang anda masukkan salah")
+
+        while (True):
+            if makanan == 1:
+                garis = ("=======================================")
+                while (True):
+                    print (("\n")*4)
+                    print (f"{garis}\nSelamat datang di menu admin\n{garis}")
+                    print ("\n1. Banyak penghasilan yang telah di dapatkan.\n2. Rata-rata pada bulan ini.\n3. Menambah barang.\n4. Menghapus barang.\n5. Daftar barang.\n0. Kembali")
+                    akses = input("\nMengakses nomor : ")
+                    if "0"<= akses <"a":
+                        akses = int(akses)
+                    else :
+                        print ("format yang anda masukkan salah")
+                    if akses == 0 :
+                        break
+                    elif akses == 1 :
+                        print ("\nPenghasilan toko anda dalam sebulan ini adalah Rp"+f"{total_uang:,}")
+                    elif akses == 2 :
+                        day3 = (total_uang/int(day))
+                        print ("Penghasilan rata-rata sampai hari ini adalah Rp"+ f"{day3:,}")
+                    elif akses == 3:
+                        k1 = input("Apa nama benda yang ingin di tambahkan : ")
+                        daftar.append (k1)
+                        k2 =input ("Tolong masukkan harganya : ")
+                        harga.append (k2)
+                    elif akses ==  4:
+                        for insd in range(len(daftar)):
+                            print (insd+1,"\b. ", daftar[insd])
+                        h1 = int(input ("Masukkan nomor benda yang ingin di hapus : "))
+                        del daftar[h1-1]
+                        del harga[h1-1]
+                    elif akses == 5 :
+                        for insd in range(len(daftar)):
+                            print (insd+1,"\b. ", daftar[insd],"(Rp", f"\b{harga[insd]}","\b)")
+                    else :
+                        print ("Format yang anda masukkan salah")
+
+
+            print ((("\n")*4)+welcome)
+            for insd in range(len(daftar)):
+                    print (insd+1,"\b. ", daftar[insd],"(Rp", f"\b{harga[insd]}","\b)")
+            print ("")
+            print ('untuk berhenti ketik "sudah" dan ketik "0" jika ingin mereset pesanan')
+            while (True):
+                pesanan = input('Pesan nomor berapa? : ')
+                if pesanan == ("sudah"):
+                    print ("\nMenu yang di pesan")
+                    for nos in range(len(buat)):
+                        print (nos+1,"\b. ", buat[nos], "(Rp", f"\b{hars[nos]}","\b)")
+                    ribuan = f"{harg1:,}"
+                    print (f"Total harga Rp{ribuan}")
+                    break
+                elif "0"<= pesanan < "a":
+                    pesanan = int(pesanan)
+                else :
+                        pesanan = -1
+
+                if 0 < pesanan < len(daftar)+1:
+                    pesanan1 = int(pesanan)-1
+                    total = (daftar[pesanan1])
+                    buat +={total}
+                    harg = int(harga[pesanan1])
+                    harg1 += harg
+                    hars += {harg}
+
+                elif pesanan == 0:
+                    print ("\nBerhasil di reset\n")
+                    print (welcome)
+                    buat = []
+                    harg1 = 0
+                    for insd in range(len(daftar)):
+                        print (insd+1,"\b. ", daftar[insd],"(Rp", f"\b{harga[insd]}","\b)")
+                else :
+                    print ("Pesanan yang anda masukkan salah")
+
+            ohe = harg1
+            if hari == ("Saturday"):
+                hari = ("Sabtu")
+                print  (f"\nkarena hari ini hari {hari} maka akan diskon 10%.")
+                ohe = (f"{(harg1-(0.1*harg1)):,}")
+                print (f"Jadi total harganya Rp{ohe}")
+                harg1 = ohe
+            elif hari == ("Sunday"):
+                hari = ("Minggu")
+                print  (f"\nkarena hari ini hari {hari} maka akan diskon 25%.")
+                ohe = (f"{(harg1-(0.25*harg1)):,}")
+                print (f"Jadi total harganya Rp{ohe}")
+                harg1 = ohe
+
+            while (True):
+                while (True):
+                    uang_awal = input(f"\n{garis}\nUang pembayaran : Rp")
+                    if uang_awal < "a":
+                        uang_awal = int(uang_awal)
+                        break
+
+                    else :
+                        print ("format yang anda masukkan salah")
+                kembalian = uang_awal-ohe
+                if uang_awal >= ohe:
+                    total_uang += int(uang_awal-kembalian)
+                    print ("\nKembaliannya adalah Rp"+ f"{kembalian:,}\n{garis}")
+                    break
+                else :
+                    print ("Format yang anda masukkan salah")
+            while (True):
+                last = input("\nMau melanjutkan? : ")
+                if last == "iya" or last == "ya" or last =="y":
+                    makanan = 0
+                    break
+                elif last == "tidak" or last == "no" or last == "n":
+                    aish = 0
+                    makanan = 0
+                    break
+                    
+                else :
+                    print ("Format yang anda masukkan salah")
+            if aish == 0:
+                break
+
+menu()
