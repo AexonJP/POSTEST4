@@ -109,15 +109,17 @@ def menu ():
             if hari == ("Saturday"):
                 hari = ("Sabtu")
                 print  (f"\nkarena hari ini hari {hari} maka akan diskon 10%.")
-                ohe = (f"{(harg1-(0.1*harg1)):,}")
-                print (f"Jadi total harganya Rp{ohe}")
-                harg1 = ohe
+                ohe1 = (f"{(harg1-(0.1*harg1)):,}")
+                print (f"Jadi total harganya Rp{ohe1}")
+                ohe = (harg1-(0.1*harg1))
+                harg1 = ohe1
             elif hari == ("Sunday"):
                 hari = ("Minggu")
                 print  (f"\nkarena hari ini hari {hari} maka akan diskon 25%.")
-                ohe = (f"{(harg1-(0.25*harg1)):,}")
-                print (f"Jadi total harganya Rp{ohe}")
-                harg1 = ohe
+                ohe1 = (f"{(harg1-(0.25*harg1)):,}")
+                print (f"Jadi total harganya Rp{ohe1}")
+                ohe = (harg1-(0.25*harg1))
+                harg1 = ohe1
 
             while (True):
                 while (True):
@@ -128,7 +130,7 @@ def menu ():
 
                     else :
                         print ("format yang anda masukkan salah")
-                kembalian = uang_awal-ohe
+                kembalian = uang_awal-int(ohe)
                 if uang_awal >= ohe:
                     total_uang += int(uang_awal-kembalian)
                     print ("\nKembaliannya adalah Rp"+ f"{kembalian:,}\n{garis}")
@@ -149,5 +151,6 @@ def menu ():
                     print ("Format yang anda masukkan salah")
             if aish == 0:
                 break
+
 
 menu()
