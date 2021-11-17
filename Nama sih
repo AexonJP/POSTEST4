@@ -1,0 +1,48 @@
+def clear():
+    import os
+    return os.system("cls")
+def hari ():
+    from datetime import date
+    waktu = date.today()
+    hari = waktu.strftime("%A")
+    tanggal1 = waktu.strftime("%d/%m/%y")
+    tanggal = waktu.strftime("%y%m%d")
+    if hari == "Monday":
+        hari = "Senin"
+    elif hari == "Tuesday" :
+        hari = "Selasa"
+    elif hari == "Wednesday":
+        hari = "Rabu"
+    elif hari == "Thursday":
+        hari = "kamis"
+    elif hari == "Friday":
+        hari = "Jum'at"
+    elif hari == "Saturday":
+        hari = "Sabtu"
+    elif hari == "Sunday":
+        hari = "Minggu"
+    print (f"Tanggal {tanggal1}\nHari {hari}")
+    return str(tanggal)
+
+def menu():
+    garis = ("=======================================")
+    print (f"{garis}\n1. Melihat jadwal ke depannya.\n2. Membuat jadwal baru.\n3. Menghapus Jadwal yang sudah ada.\n{garis}")
+    masukan = input ("Ingin membuka nomor brp?")
+    return masukan
+
+def check(masukan):
+    try:
+        masukan = int(masukan)
+        if masukan > 0 :
+            clear()
+            return masukan
+        else:
+            print("Format yang anda masukkan salah")
+            return 0
+    except :
+        print("Format yang anda masukkan salah")
+        return 0
+        
+while (True):
+    if check(menu()) > 0 :
+        break
